@@ -13,3 +13,7 @@
 
 * Is the bot limited to Telegram?
 > Yes, the bot is available for Telegram only.
+
+# Known issues
+
+* There's still no implementation for multi word searches (e. g. _/imageof car bike_), so using multiple words as search string will lead to unwanted behavior. Be sure to use only one word until there's a fix.
