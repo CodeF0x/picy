@@ -9,7 +9,7 @@
 * What commands are available?
 > * _/help_ - Provides basic information about the bot.
 > * _/start_ - The inital command you send when starting chatting.
-> * _/imageof {your-word}_ - Sends you a random image of {your_word}.
+> * _/imageof {your-word}_ - Sends you a random image of {your-word}.
 
 * Is the bot limited to Telegram?
 > Yes, the bot is available for Telegram only.
