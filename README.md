@@ -3,7 +3,7 @@
 * What does this bot do?
 > The bot sends you a random image of a word you provide.
 
-* Where can I interact with the bot?
+* How can I interact with the bot?
 > Simply start chatting with [@Random_Image_Bot](https://t.me/Random_Image_Bot).
 
 * What commands are available?
