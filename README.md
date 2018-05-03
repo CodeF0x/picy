@@ -16,5 +16,6 @@
 
 # Known issues
 
-* There's still no implementation of multi word searches (e. g. _/imageof car bike_), so using multiple words as search string will lead to unwanted behavior. Be sure to use only one word until there's a fix.
-* Sometimes, the bot won't respond when requesting an image.
+* \#1 There's still no implementation of multi word searches (e. g. _/imageof car bike_), so using multiple words as search string will lead to unwanted behavior. Be sure to use only one word until there's a fix.
+* \#2 Sometimes, the bot won't respond when requesting an image.
+* \#3 The bot can have quite a long response time. If the bot han't sent you a photo after ~15 seconds, simply try again. If still nothing happens, the problem is related to issue \#2.
