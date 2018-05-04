@@ -14,6 +14,12 @@
 * Is the bot limited to Telegram?
 > Yes, the bot is available for Telegram only.
 
+# Used Node.js modules
+
+* [telebot](https://www.npmjs.com/package/telebot) - Used to interact with the Telegram API
+* [request](https://www.npmjs.com/package/request) - A simplified HTTP client, used the grab the search engines "result"-page
+* [jsdom](https://www.npmjs.com/package/jsdom) - Used the parse [requests](https://www.npmjs.com/packages/request) "result"
+
 # Known issues
 
 * \#1 There's no implementation of multi word searches (e. g. _/imageof car bike_) yet, so using multiple words as search string will lead to unwanted behavior. Be sure to use only one word until there's a fix.
