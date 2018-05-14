@@ -1,7 +1,7 @@
 // Request module
 const request = require('request');
 
-// Telegrab module
+// Telebot module
 const Telebot = require('telebot');
 
 // Bot
@@ -39,12 +39,12 @@ bot.on(/^\/imageof (.+)$/, (msg, props) => {
 });
 
 // Actual function to send the photo
-function sendPhoto(msg, url) {
+const sendPhoto = (msg, url) => {
     msg.reply.photo(url); // Send the photo
 }
 
 // Function to send an error message
-function sendError(msg, props) {
+const sendError = (msg, props) => {
     msg.reply.text("⚠️ Sorry, I couldn't find any image related to " + "\"" + props.match[1] + "\"" + ". ⚠️");
 }
 bot.start();
