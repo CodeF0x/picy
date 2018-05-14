@@ -45,6 +45,6 @@ const sendPhoto = (msg, url) => {
 
 // Function to send an error message
 const sendError = (msg, props) => {
-    msg.reply.text("⚠️ Sorry, I couldn't find any image related to " + "\"" + props.match[1] + "\"" + ". ⚠️");
+    msg.reply.text(`⚠️ Sorry, I couldn't find any image related to "${props.match[1]}". ⚠️`);
 }
 bot.start();
