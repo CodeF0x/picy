@@ -22,16 +22,16 @@ bot.on('/help', (msg) => msg.reply.text('Usage:\n /imageof <your_word> sends you
 bot.on(/^\/imageof (.+)$/, (msg, props) => {
     request(`https://unsplash.com/search/photos/${props.match[1]}`, function (error, response) { // Get the search results of bing
         var html = new JSDOM(response.body); // Parse the response 
-        var images = html.window.document.getElementsByTagName('img'); // Get all images
+        var images = html.window.document.getElementsByClassName('_2zEKz'); // Get all images - in this case by class name, otherwise we would get profile pictures too
         var sources = []; // Array to pick random url from
         for (var i = 0; i < images.length; i++) { // Loop through all images and push only valid url to the array
-            if (images[i].src.includes('http')) {
+            if (images[i].src.includes('https')) {
                 sources.push(images[i].src);
             }
         }
         // Check if the array containing the url has any values
         if (typeof sources[0] !== "undefined") {
-            sendPhoto(msg, sources[Math.floor(Math.random() * sources.length) + 1]); // Random url as parmeter
+            sendPhoto(msg, sources[Math.floor(Math.random() * sources.length)]); // Random url as parmeter
         } else {
             sendError(msg, props);
         }
