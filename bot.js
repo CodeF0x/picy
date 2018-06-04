@@ -20,7 +20,7 @@ bot.on('/help', (msg) => msg.reply.text('Usage:\n /imageof <your_word> sends you
 
 // /imageof command
 bot.on(/^\/imageof (.+)$/, (msg, props) => {
-    request("https://www.bing.com/search?q=" + props.match[1], function (error, response) { // Get the search results of bing
+    request(`https://unsplash.com/search/photos/${props.match[1]}`, function (error, response) { // Get the search results of bing
         var html = new JSDOM(response.body); // Parse the response 
         var images = html.window.document.getElementsByTagName('img'); // Get all images
         var sources = []; // Array to pick random url from
@@ -45,6 +45,6 @@ const sendPhoto = (msg, url) => {
 
 // Function to send an error message
 const sendError = (msg, props) => {
-    msg.reply.text(`⚠️ Sorry, I couldn't find any image related to "${props.match[1]}". ⚠️`);
+    msg.reply.text(`⚠️ Sorry, I couldn't find any image for "${props.match[1]}". ⚠️`);
 }
 bot.start();
