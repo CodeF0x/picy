@@ -31,7 +31,7 @@ bot.on(/^\/imageof (.+)$/, (msg, props) => {
         }
         // Check if the array containing the url has any values
         if (typeof sources[0] !== "undefined") {
-            sendPhoto(msg, sources[Math.floor(Math.random() * sources.length)]); // Random url as parmeter
+            sendPhoto(msg, sources[Math.floor(Math.random() * sources.length) + 1]); // Random url as parmeter
         } else {
             sendError(msg, props);
         }
