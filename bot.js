@@ -16,7 +16,7 @@ const { JSDOM } = jsdom;
 bot.on('/start', (msg) => msg.reply.text('Hello! For informations about usage, creator, etc., please use the command /help!'));
 
 // /help command
-bot.on('/help', (msg) => msg.reply.text('Usage:\n /imageof <your_word> sends you an random image.\nExample:\n/imageof dog - You\'ll get an random image of a dog.\n\nAbout:\nVersion: 1.0\nCreator: @CodeFox\nGitHub: https://github.com/CodeF0x/image-search-telegram-bot\nAll images are taken from https://unsplash.com.'));
+bot.on('/help', (msg) => msg.reply.text('Usage:\n /imageof <your_word> sends you an random image.\nExample:\n/imageof dog - You\'ll get an random image of a dog.\n\nAbout:\nVersion: 2.0\nCreator: @CodeFox\nGitHub: https://github.com/CodeF0x/image-search-telegram-bot\nAll images are taken from https://unsplash.com.'));
 
 // /imageof command
 bot.on(/^\/imageof (.+)$/, (msg, props) => {
