@@ -16,16 +16,16 @@ const { JSDOM } = jsdom;
 bot.on('/start', (msg) => msg.reply.text('Hello! For informations about usage, creator, etc., please use the command /help!'));
 
 // /help command
-bot.on('/help', (msg) => msg.reply.text('Usage:\n /imageof <your_word> sends you an random image.\nExample:\n/imageof dog - You\'ll get an random image of a dog.\n\nAbout:\nVersion: 1.0\nCreator: @CodeFox\nGitHub: https://github.com/CodeF0x/image-search-telegram-bot\n\nMiscellaneous:\nThe images are very tiny, sorry for that.'));
+bot.on('/help', (msg) => msg.reply.text('Usage:\n /imageof <your_word> sends you an random image.\nExample:\n/imageof dog - You\'ll get an random image of a dog.\n\nAbout:\nVersion: 2.0\nCreator: @CodeFox\nGitHub: https://github.com/CodeF0x/image-search-telegram-bot\nAll images are taken from https://unsplash.com.'));
 
 // /imageof command
 bot.on(/^\/imageof (.+)$/, (msg, props) => {
-    request("https://www.bing.com/search?q=" + props.match[1], function (error, response) { // Get the search results of bing
+    request(`https://unsplash.com/search/photos/${props.match[1]}`, function (error, response) { // Get the search results of bing
         var html = new JSDOM(response.body); // Parse the response 
-        var images = html.window.document.getElementsByTagName('img'); // Get all images
+        var images = html.window.document.getElementsByClassName('_2zEKz'); // Get all images - in this case by class name, otherwise we would get profile pictures too
         var sources = []; // Array to pick random url from
         for (var i = 0; i < images.length; i++) { // Loop through all images and push only valid url to the array
-            if (images[i].src.includes('http')) {
+            if (images[i].src.includes('https')) {
                 sources.push(images[i].src);
             }
         }
@@ -45,6 +45,6 @@ const sendPhoto = (msg, url) => {
 
 // Function to send an error message
 const sendError = (msg, props) => {
-    msg.reply.text(`⚠️ Sorry, I couldn't find any image related to "${props.match[1]}". ⚠️`);
+    msg.reply.text(`⚠️ Sorry, I couldn't find any image for "${props.match[1]}". ⚠️`);
 }
 bot.start();
