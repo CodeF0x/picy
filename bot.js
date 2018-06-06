@@ -39,12 +39,10 @@ bot.on(/^\/imageof (.+)$/, (msg, props) => {
 });
 
 // Actual function to send the photo
-const sendPhoto = (msg, url) => {
-    msg.reply.photo(url); // Send the photo
-}
+const sendPhoto = (msg, url) => msg.reply.photo(url); // Send the photo
+
 
 // Function to send an error message
-const sendError = (msg, props) => {
-    msg.reply.text(`⚠️ Sorry, I couldn't find any image for "${props.match[1]}". ⚠️`);
-}
+const sendError = (msg, props) => msg.reply.text(`⚠️ Sorry, I couldn't find any image for "${props.match[1]}". ⚠️`);
+
 bot.start();
