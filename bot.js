@@ -1,13 +1,6 @@
-// Request module
 const request = require('request');
-
-// Telebot module
 const Telebot = require('telebot');
-
-// Bot
-const bot = new Telebot("YOUR TELEGRAM API TOKEN");
-
-// DOMParser
+const bot = new Telebot("563750971:AAGsJ9fDAw0OHln9HphfYg3u3vgGDV7r8Og");
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
@@ -21,14 +14,11 @@ bot.on('/help', (msg) => msg.reply.text('Usage:\n /imageof <your_word> sends you
 // /imageof command
 bot.on(/^\/imageof (.+)$/, (msg, props) => {
     request(`https://unsplash.com/search/photos/${props.match[1]}`, function (error, response) { // Get the search results of bing
-        var html = new JSDOM(response.body); // Parse the response 
-        var images = html.window.document.getElementsByClassName('_2zEKz'); // Get all images - in this case by class name, otherwise we would get profile pictures too
-        var sources = []; // Array to pick random url from
-        for (var i = 0; i < images.length; i++) { // Loop through all images and push only valid url to the array
-            if (images[i].src.includes('https')) {
-                sources.push(images[i].src);
-            }
-        }
+        const html = new JSDOM(response.body); // Parse the response 
+        const images = html.window.document.getElementsByClassName('_2zEKz'); // Get all images - in this case by class name, otherwise we would get profile pictures too
+        var sources = Array.prototype.slice.call(images) // NodeList to regular array
+            .filter(img => img.src.indexOf('https') == 0) // Only valid sources
+            .map(img => img.src); // Extract source
         // Check if the array containing the url has any values
         if (typeof sources[0] !== "undefined") {
             sendPhoto(msg, sources[Math.floor(Math.random() * sources.length)]); // Random url as parmeter
