@@ -1,6 +1,6 @@
 const request = require('request');
 const Telebot = require('telebot');
-const bot = new Telebot("563750971:AAGsJ9fDAw0OHln9HphfYg3u3vgGDV7r8Og");
+const bot = new Telebot("YOUR TELEGRAM API TOKEN");
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
