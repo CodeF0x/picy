@@ -15,7 +15,7 @@ bot.on('/help', (msg) => msg.reply.text('Usage:\n /imageof <your_word> sends you
 bot.on(/^\/imageof (.+)$/, (msg, props) => {
     request(`https://unsplash.com/search/photos/${props.match[1]}`, function (error, response) { // Get the search results of bing
         const html = new JSDOM(response.body); // Parse the response 
-        const images = html.window.document.getElementsByClassName('_2zEKz'); // Get all images - in this case by class name, otherwise we would get profile pictures too
+        const images = html.window.document.getElementsByClassName('rHpVH'); // Get all images - in this case by class name, otherwise we would get profile pictures too
         var sources = Array.prototype.slice.call(images) // NodeList to regular array
             .filter(img => img.src.indexOf('https') == 0) // Only valid sources
             .map(img => img.src); // Extract source
