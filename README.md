@@ -18,8 +18,13 @@
 
 * [telebot](https://www.npmjs.com/package/telebot) - Used to interact with the Telegram API
 * [request](https://www.npmjs.com/package/request) - A simplified HTTP client, used the grab the search engines "result"-page
-* [jsdom](https://www.npmjs.com/package/jsdom) - Used the parse [requests](https://www.npmjs.com/packages/request) "result"
 
 # Known issues
 
 * None
+
+# Other
+You need to modify node_modules\unsplash-js\lib\unsplash.js the following way: 
+
+* export toJson: exports.toJson = toJson;
+* import module node-fetch: const fetch = require('node-fetch');
