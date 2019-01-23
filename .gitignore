@@ -1,3 +1,5 @@
 package-lock.json
 node_modules/*
 !node_modules/unsplash-js/lib/unsplash.js
+other/*
+example.js

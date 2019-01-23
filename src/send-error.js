@@ -6,5 +6,5 @@
  *
  */
 module.exports = function sendError(msg, props) {
-    msg.reply.text(`Sorry, I couldn't find any image for "${props.match[1]}". ❌ \n Please try something different.`);
+    msg.reply.text(`Sorry, I couldn't find any image for "${props.match[1]}". ❌ Please try something different.`);
 }

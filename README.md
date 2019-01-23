@@ -17,14 +17,15 @@
 # Used Node.js modules
 
 * [telebot](https://www.npmjs.com/package/telebot) - Used to interact with the Telegram API
-* [request](https://www.npmjs.com/package/request) - A simplified HTTP client, used the grab the search engines "result"-page
+* [unsplash-js](https://www.npmjs.com/package/unsplash-js) - A wrapper for the Unsplash API
+* [node-fetch](https://www.npmjs.com/package/node-fetch) - A polyfill for the browser-native fetch API
 
 # Known issues
 
 * None
 
 # Other
-You need to modify node_modules\unsplash-js\lib\unsplash.js the following way: 
+To get the bot working, you will need to modify node_modules/unsplash-js/lib\unsplash.js the following way: 
 
-* export toJson: exports.toJson = toJson;
-* import module node-fetch: const fetch = require('node-fetch');
+* `export toJson: exports.toJson = toJson`, on the very last line (right under the declaration of toJson());
+* `import module node-fetch: const fetch = require('node-fetch')`, somewhere at the top;
