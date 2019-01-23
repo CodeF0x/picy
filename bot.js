@@ -1,38 +1,25 @@
-const request = require('request');
+// Modules
 const Telebot = require('telebot');
-const bot = new Telebot("YOUR TELEGRAM API TOKEN");
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
+const unsplash = require('unsplash-js').default;
+const toJson = require('unsplash-js').toJson;
+const filesystem = require('fs');
 
-
-// /start command
-bot.on('/start', (msg) => msg.reply.text('Hello! For informations about usage, creator, etc., please use the command /help!'));
-
-// /help command
-bot.on('/help', (msg) => msg.reply.text('Usage:\n /imageof <your_word> sends you an random image.\nExample:\n/imageof dog - You\'ll get an random image of a dog.\n\nAbout:\nVersion: 2.0\nCreator: @CodeFox\nGitHub: https://github.com/CodeF0x/picy\nAll images are taken from https://unsplash.com.'));
-
-// /imageof command
-bot.on(/^\/imageof (.+)$/, (msg, props) => {
-    request(`https://unsplash.com/search/photos/${props.match[1]}`, function (error, response) { // Get the search results of bing
-        const html = new JSDOM(response.body); // Parse the response 
-        const images = html.window.document.getElementsByClassName('_2zEKz'); // Get all images - in this case by class name, otherwise we would get profile pictures too
-        var sources = Array.prototype.slice.call(images) // NodeList to regular array
-            .filter(img => img.src.indexOf('https') == 0) // Only valid sources
-            .map(img => img.src); // Extract source
-        // Check if the array containing the url has any values
-        if (typeof sources[0] !== "undefined") {
-            sendPhoto(msg, sources[Math.floor(Math.random() * sources.length)]); // Random url as parmeter
-        } else {
-            sendError(msg, props);
-        }
-    });
+// Objects
+const bot = new Telebot(filesystem.readFileSync('other/bot-token.txt', 'utf8'));
+const api = new unsplash({
+    applicationId: filesystem.readFileSync('other/unsplash-app-id.txt', 'utf8'),
+    secret: filesystem.readFileSync('other/unsplash-secret.txt', 'utf8')
 });
 
-// Actual function to send the photo
-const sendPhoto = (msg, url) => msg.reply.photo(url); // Send the photo
+// Methods
+const getInfo = require('./src/info.js');
+const start = require('./src/start.js');
+const sendImage = require('./src/image.js');
 
+// Listeners
+bot.on('/help', msg => getInfo(msg));
+bot.on('/start', msg => start(msg));
+bot.on(/^\/imageof (.+)$/, (msg, props) => sendImage(msg, props, api, toJson));
 
-// Function to send an error message
-const sendError = (msg, props) => msg.reply.text(`⚠️ Sorry, I couldn't find any image for "${props.match[1]}". ⚠️`);
 
 bot.start();
