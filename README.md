@@ -27,5 +27,5 @@
 # Other
 To get the bot working, you will need to modify node_modules/unsplash-js/lib\unsplash.js the following way: 
 
-* `export toJson: exports.toJson = toJson`, on the very last line (right under the declaration of toJson());
-* `import module node-fetch: const fetch = require('node-fetch')`, somewhere at the top;
+* `export toJson: exports.toJson = toJson`, on the very last line (right under the declaration of toJson())
+* `import module node-fetch: const fetch = require('node-fetch')`, somewhere at the top
