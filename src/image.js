@@ -18,8 +18,10 @@ module.exports = function sendImage(msg, props, api, toJson) {
             }
             const images = [];
             json.results.forEach(pic => {
-                images.push(pic.urls.regular);
+                images.push(pic);
             });
-            msg.reply.photo(images[Math.floor(Math.random() * images.length)]);
-        });
+            const random = Math.floor(Math.random() * images.length);
+            msg.reply.photo(images[random].urls.regular, {parseMode: 'Markdown', caption: `Photo by [${images[random].user.name}](${images[random].user.links.html}), found on [Unsplash](${images[random].urls.regular}).`});
+        })
+        .catch(err => msg.reply.text('Sorry, something bad happened. 😰 If you want to report this, please message @CodeF0x.'));
 }
