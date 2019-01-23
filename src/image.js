@@ -18,7 +18,7 @@ module.exports = function sendImage(msg, props, api, toJson) {
             }
             const images = [];
             json.results.forEach(pic => {
-                console.log(pic.urls);
+                images.push(pic.urls.regular);
             });
             msg.reply.photo(images[Math.floor(Math.random() * images.length)]);
         });
