@@ -35,3 +35,7 @@ To get the bot working, you will need to modify node_modules/unsplash-js/lib\uns
 
 * `export toJson: exports.toJson = toJson`, on the very last line (right under the declaration of toJson())
 * `import module node-fetch: const fetch = require('node-fetch')`, somewhere at the top
+
+### Tracking
+
+The tracking via the UTM parameters in image.js is a requirement by Unsplash to get approval for production limit-rates of their API.
