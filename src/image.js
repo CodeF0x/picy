@@ -21,7 +21,7 @@ module.exports = function sendImage(msg, props, api, toJson) {
                 images.push(pic);
             });
             const random = Math.floor(Math.random() * images.length);
-            msg.reply.photo(images[random].urls.regular, {parseMode: 'Markdown', caption: `Photo by [${images[random].user.name}](${images[random].user.links.html}), found on [Unsplash](${images[random].urls.regular}).`});
+            msg.reply.photo(images[random].urls.regular, {parseMode: 'Markdown', caption: `Photo by [${images[random].user.name}](${images[random].user.links.html}?utm_source=picy&utm_medium=referral), found on [Unsplash](${images[random].urls.regular}?utm_source=picy&utm_medium=referral).`});
         })
         .catch(err => msg.reply.text('Sorry, something bad happened. 😰 If you want to report this, please message @CodeF0x.'));
 }
