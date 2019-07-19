@@ -1,3 +1,6 @@
+# This bot is no longer running and maintained, even though the bot account still exists.
+Once I find a good Node.js hoster where I can alter the unsplash npm module, this bot will be live again.
+
 # FAQ
 
 * What does this bot do?
